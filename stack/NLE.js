@@ -1,4 +1,4 @@
-let arr = [5, 4, 5, 7];
+let arr = [5, 4, 2, 7, 1, 8, 4];
 
 const nextGreatertoRight = (arr) => {
   let stack = [];
