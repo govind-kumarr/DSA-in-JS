@@ -1,5 +1,5 @@
 let arr = [2, 5, 1, 8, 2, 9, 1];
-
+/*
 const findSum = (arr, k) => {
   let sum = 0;
   let max = 0;
@@ -16,5 +16,22 @@ const findSum = (arr, k) => {
 
   console.log(max);
 };
+*/
 
-findSum(arr,4);
+const findSum = (arr, k) => {
+  let i = 0,
+    j = 0,
+    sum = 0,
+    max = 0;
+  while (j < arr.length) {
+    if (j - i + 1 <= k) {
+      sum += arr[j++];
+    } else if (j - i + 1 > k) {
+      sum -= arr[i++];
+      sum += arr[j++];
+    }
+    sum > max ? (max = sum) : null;
+  }
+  console.log(max);
+};
+findSum(arr, 4);
