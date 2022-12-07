@@ -1,4 +1,4 @@
-let arr = [4, 1, 1, 1, 2, 3, 5];
+let arr = [2, 1, 1, 1, 2, 3, 5];
 
 function largestSubArr(arr, k) {
   let i = 0,
@@ -22,4 +22,4 @@ function largestSubArr(arr, k) {
   console.log(max);
 }
 
-largestSubArr(arr, 5);
+largestSubArr(arr, 7);
