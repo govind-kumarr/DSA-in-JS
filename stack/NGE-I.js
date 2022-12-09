@@ -2,7 +2,7 @@ let arr = [5, 4, 2, 7, 1, 8, 4];
 
 const nextGreatertoRight = (arr) => {
   let stack = [];
-  let ans = [];
+  let ans = new Array(arr.length).fill(-1);
   for (let i = arr.length - 1; i >= 0; i--) {
     if (stack.length === 0) stack.push(arr[i]);
     else if (arr[i] < stack[stack.length - 1]) {
@@ -17,7 +17,7 @@ const nextGreatertoRight = (arr) => {
       stack.push(arr[i]);
     }
   }
-  console.log(ans);
+  return ans;
 };
 
-nextGreatertoRight(arr);
+nextGreatertoRight([1, 3, 4, 2]);
