@@ -3,14 +3,16 @@ let arr = [5, 4, 2, 7, 1, 8, 4];
 function nextGreatertoRight(arr) {
   let j = 0,
     stack = [],
-    ans = new Array(arr.length).fill(-1);
+    ans = [];
 
   while (j < arr.length) {
     if (stack.length === 0) stack.push(j);
-    else if (arr[j] <= arr[stack[stack.length - 1]]) stack.push(j);
-    else {
+    else if (arr[j] <= arr[stack[stack.length - 1]]){
+      stack.pop();
+      stack.push(j);
+    }else {
       while (arr[j] > arr[stack[stack.length - 1]] && stack.length > 0) {
-        ans[stack[stack.length - 1]] = arr[j];
+        ans.push(arr[j] - arr[stack[stack.length - 1]]);
         stack.pop();
       }
       stack.push(j);
@@ -20,5 +22,5 @@ function nextGreatertoRight(arr) {
   return ans;
 }
 
-let ans = nextGreatertoRight([2, 1, 3, 1, 6]);
+let ans = nextGreatertoRight([1, 2, 3, 4, 5]);
 console.log(ans);
