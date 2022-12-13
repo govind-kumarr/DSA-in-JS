@@ -28,8 +28,12 @@ class LinkedList {
 let newList = new LinkedList();
 newList.push(1);
 newList.push(1);
+newList.push(1);
 newList.push(2);
-
+newList.push(2);
+newList.push(3);
+newList.push(4);
+/*
 function removeDuplicates(list) {
   let head = list;
   if (!head) return head;
@@ -48,6 +52,25 @@ function removeDuplicates(list) {
   }
   return head;
 }
+*/
+// let ans = removeDuplicates(newList);
 
-let ans = removeDuplicates(newList);
-console.log(ans);
+// console.log(ans);
+
+let head = newList.head;
+
+let current = head;
+let prev = current;
+let temp;
+while (current.next) {
+  if (prev.val === current.val) {
+    current = current.next;
+  } else {
+    prev.next = current;
+    prev = current;
+    current.next;
+  }
+  console.log(prev.val, "prev");
+  console.log(current.val, "current");
+}
+console.log(newList);
