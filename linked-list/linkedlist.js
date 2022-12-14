@@ -23,54 +23,123 @@ class LinkedList {
     this.length++;
     return this.head;
   }
+  pop() {
+    let current = this.head;
+    let temp = current.next;
+    while (temp.next) {
+      current = temp;
+      temp = temp.next;
+    }
+    current.next = null;
+    this.tail = current;
+    this.length--;
+  }
+  traverse() {
+    let current = this.head;
+    while (current) {
+      console.log(current.val);
+      current = current.next;
+    }
+  }
+
+  shift() {
+    let newHead = this.head.next;
+    this.head = newHead;
+  }
+  unishift(val) {
+    let newNode = new Node(val);
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+
+  get(i) {
+    let ind = 0;
+    let current = this.head;
+    while (ind < i) {
+      current = current.next;
+      ind++;
+    }
+    return current;
+  }
+  set(i, val) {
+    if (!i || !val) {
+      throw Error;
+      return;
+    }
+    let current = this.get(i);
+    current.val = val;
+  }
+  insert(i, val) {
+    let current = this.head;
+    let prev = current;
+    let ind = 0;
+    while (ind < i) {
+      prev = current;
+      current = current.next;
+      ind++;
+    }
+    let newNode = new Node(val);
+    newNode.next = current;
+    prev.next = newNode;
+    this.length++;
+  }
+  delete(i) {
+    let current = this.head;
+    let prev = current;
+    let ind = 0;
+    while (ind < i) {
+      prev = current;
+      current = current.next;
+      ind++;
+    }
+    prev.next = current.next;
+    current.next = null;
+  }
 }
 
 let newList = new LinkedList();
 newList.push(1);
-newList.push(1);
-newList.push(1);
-newList.push(2);
 newList.push(2);
 newList.push(3);
 newList.push(4);
-/*
-function removeDuplicates(list) {
-  let head = list;
-  if (!head) return head;
+newList.push(5);
+newList.push(6);
+newList.push(7);
 
-  let prev = head;
-  let next = prev.next;
-  while (prev.next!=null) {
-    console.log(prev,next)
-    if(prev.val==next.val){
-      let newNext = next.next;
-      prev.next = newNext;
-    }else{
-      prev = prev.next;
-      next = next.next;
-    }
-  }
-  return head;
-}
-*/
-// let ans = removeDuplicates(newList);
-
-// console.log(ans);
+// newList.unishift(0);
+// newList.shift();
+// newList.traverse();
+// console.log(newList.get(5));
+// newList.set(5, -5);
+// console.log(newList.get(5));
+// newList.insert(5, -5);
+// newList.traverse();
+// newList.delete(5);
+// newList.traverse();
 
 let head = newList.head;
 
-let current = head;
-let prev = current;
-let temp;
-while (current.next) {
-  if (prev.val === current.val) {
-    current = current.next;
-  } else {
-    prev.next = current;
-    prev = current;
-    current.next;
-  }
-  console.log(prev.val, "prev");
-  console.log(current.val, "current");
+function reverse(list) {
+  if (!list || !list.next) return list;
+
 }
-console.log(newList);
+
+reverse(head);
+var swapNodes = function (head, k) {
+  let len = 0;
+  let current = head;
+  let val1, val2;
+  while (current) {
+    if (len == k - 1) val1 = current.val;
+    len++;
+    current = current.next;
+  }
+  let ind = 0,
+    i = len - k;
+  current = head;
+  while (ind < i) {
+    ind++;
+    current = current.next;
+  }
+  return head;
+};
