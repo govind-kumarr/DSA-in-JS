@@ -14,7 +14,7 @@ function nearestSmallerToLeft(nums) {
     }
     j--;
   }
-  return ans;
+  // return ans;
 }
 
 let ans = nearestSmallerToLeft([2, 1, 5, 6, 2, 3]);
