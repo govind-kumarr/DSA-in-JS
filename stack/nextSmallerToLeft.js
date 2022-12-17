@@ -10,7 +10,7 @@ function nearestSmallerToLeft(nums) {
         ans[stack[stack.length - 1]] = nums[j];
         stack.pop();
       }
-      stack.push(j);
+      // stack.push(j);
     }
     j--;
   }
