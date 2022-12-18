@@ -10,11 +10,11 @@ function nearestSmallerToLeft(nums) {
         ans[stack[stack.length - 1]] = nums[j];
         stack.pop();
       }
-      // stack.push(j);
+      stack.push(j);
     }
     j--;
   }
-  // return ans;
+  return ans;
 }
 
 let ans = nearestSmallerToLeft([2, 1, 5, 6, 2, 3]);
