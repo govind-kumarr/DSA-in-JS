@@ -12,7 +12,7 @@ function nearestSmallerToLeft(nums) {
       }
       stack.push(j);
     }
-    j--;
+    // j--;
   }
   return ans;
 }
