@@ -121,7 +121,6 @@ let head = newList.head;
 
 function reverse(list) {
   if (!list || !list.next) return list;
-
 }
 
 reverse(head);
@@ -143,3 +142,36 @@ var swapNodes = function (head, k) {
   }
   return head;
 };
+
+let list1 = { val: 1, next: { val: 4, next: { val: 6, next: null } } };
+let list2 = { val: 3, next: { val: 5, next: { val: 7, next: null } } };
+
+function merge(list1, list2) {
+  let cur1 = list1,
+    cur2 = list2,
+    result = { val: 0, next: null },
+    dummyHead = result;
+
+  //**Running a loop to merge */
+  while (cur1 && cur2) {
+    if (cur1.val <= cur2.val) {
+      let temp = cur1.next;
+      cur1.next = null;
+      dummyHead.next = cur1;
+      cur1 = temp;
+    } else {
+      let temp = cur2.next;
+      cur2.next = null;
+      dummyHead.next = cur2;
+      cur2 = temp;
+    }
+    dummyHead = dummyHead.next;
+  }
+
+  if (cur1) dummyHead.next = cur1;
+  else if (cur2) dummyHead.next = cur2;
+
+  return result.next;
+}
+
+console.log(merge(list1, list2));
