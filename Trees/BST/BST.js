@@ -1,6 +1,6 @@
 class Node {
   constructor(value) {
-    this.value = value;
+    this.val = value;
     this.left = null;
     this.right = null;
   }
@@ -22,8 +22,8 @@ class BinarySearchTree {
     let cur = this.root;
 
     while (true) {
-      if (value === cur.value) return -1;
-      if (value < cur.value) {
+      if (value === cur.val) return -1;
+      if (value < cur.val) {
         if (cur.left === null) {
           cur.left = newNode;
           return this.root;
@@ -46,8 +46,8 @@ class BinarySearchTree {
       found = false;
 
     while (cur && !found) {
-      if (value < cur.value) cur = cur.left;
-      else if (value > cur.value) cur = cur.right;
+      if (value < cur.val) cur = cur.left;
+      else if (value > cur.val) cur = cur.right;
       else found = true;
     }
 
@@ -67,11 +67,10 @@ class BinarySearchTree {
 
     while (queue.length) {
       node = queue.shift();
-      data.push(node.value);
+      data.push(node.val);
       if (node.left) queue.push(node.left);
       if (node.right) queue.push(node.right);
     }
-
     return data;
   }
 
@@ -80,7 +79,7 @@ class BinarySearchTree {
     let data = [];
 
     function traverse(node) {
-      data.push(node.value);
+      data.push(node.val);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
     }
@@ -98,7 +97,7 @@ class BinarySearchTree {
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
 
-      data.push(node.value);
+      data.push(node.val);
     }
 
     traverse(this.root);
@@ -113,12 +112,36 @@ class BinarySearchTree {
 
     function traverse(node) {
       if (node.left) traverse(node.left);
-      data.push(node.value);
+      data.push(node.val);
       if (node.right) traverse(node.right);
     }
     traverse(this.root);
 
     return data;
+  }
+  maxDepth(root) {
+    if (!root) return 0;
+
+    let queue = [],
+      node = root,
+      count = 0;
+
+    queue.push(node);
+    queue.push(null);
+
+    while (queue.length) {
+      node = queue.shift();
+      if (node === null) {
+        count++;
+        if (queue.length) queue.push(null);
+      } else {
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+      }
+    }
+
+    console.log("Depth is ", count);
+    return count;
   }
 }
 
@@ -144,3 +167,52 @@ console.log(tree.BFS(), "BFS");
 console.log(tree.DFS_Pre(), "DFS_PRE");
 console.log(tree.DFS_post(), "DFS_POST");
 console.log(tree.DFS_inOrder(), "DFS_InOrder");
+
+tree.maxDepth(tree.root);
+
+let binaryTree = new BinarySearchTree();
+binaryTree.Insert(1);
+binaryTree.Insert(0);
+binaryTree.Insert(0);
+binaryTree.Insert(0);
+binaryTree.Insert(1);
+binaryTree.Insert(0);
+binaryTree.Insert(1);
+
+console.log(binaryTree);
+
+function boundaryTraversal(root) {
+  if (!root) return null;
+
+  let leftAns = [],
+    rightAns = [],
+    leafs = [];
+  function traverseLeft(node) {
+    if (!node || (!node.left && !node.right)) return;
+    leftAns.push(node.val);
+    if (node.left) traverseLeft(node.left);
+    if (node.right) traverseLeft(node.right);
+  }
+  function traverseRight(node) {
+    if (!node || (!node.left && !node.right)) return;
+    rightAns.push(node.val);
+    if (node.right) traverseRight(node.right);
+    if (node.left) traverseRight(node.right);
+  }
+  function traverseLeafs(node) {
+    if (!node) return;
+    if (!node.left && !node.right) leafs.push(node.val);
+    if (node.left) traverseLeafs(node.left);
+    if (node.right) traverseLeafs(node.right);
+  }
+
+  traverseLeft(root.left);
+  traverseLeafs(root);
+  traverseRight(root.right);
+  rightAns = rightAns.reverse();
+  let ans = [root.val, ...leftAns, ...leafs, ...rightAns];
+
+  return ans;
+}
+
+console.log(boundaryTraversal(tree.root),'Boundary traversal');

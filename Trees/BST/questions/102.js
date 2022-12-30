@@ -7,12 +7,18 @@ function BFS(root) {
     cur = root;
 
   queue.push(cur);
+  queue.push(null);
 
   while (queue.length) {
-    mat.push(cur);
-    data.push(mat);
-    if (cur.left) queue.push(cur.left);
-    if (cur.right) queue.push(cur.right);
-    queue.shift();
+    cur = queue.shift();
+    data.push(cur.val);
+    if (cur === null) {
+      mat.push(data);
+      if (queue.length) queue.push(null);
+      data = [];
+    } else {
+      if (cur.left) queue.push(cur.left);
+      if (cur.right) queue.push(cur.right);
+    }
   }
 }
