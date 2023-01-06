@@ -1,7 +1,5 @@
-function main(nums){
-  let n = nums.length;
-  function solve() {
-    if(n<0) return 0;
-    if(n==)
-  }
+// let arr = [9,9,8,2];
+
+function findMaxSum(nums){
+  
 }
