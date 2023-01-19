@@ -9,4 +9,4 @@ function convertToBinary(num) {
   return ans;
 }
 
-console.log(convertToBinary(5));
+module.exports = convertToBinary;
