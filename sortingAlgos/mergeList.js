@@ -21,6 +21,7 @@ function merge(list1, list2) {
       cur2 = temp;
     }
   }
+
   
   if (cur1) tail.next = cur1;
   else if (cur2) tail.next = cur2;
