@@ -8,16 +8,23 @@ function findLongestStr(str) {
     max = 0;
 
   while (j < str.length) {
+
     if (obj[str[j]] === undefined) {
+
       obj[str[j]] = 1;
+      
       count = Object.keys(obj).length;
+
       count > max ? (max = count) : null;
     } else {
+
       obj[str[j]]++;
+
       while (obj[str[j]] > 1) {
         obj[str[i]]--;
         i++;
       }
+
       count = Object.keys(obj).length;
       count > max ? (max = count) : null;
     }
@@ -26,7 +33,7 @@ function findLongestStr(str) {
   console.log(max);
 }
 
-findLongestStr("pwwkew");
+findLongestStr(str);
 
 //Test Cases --> "pwwkew"
 // 'dvdf'
