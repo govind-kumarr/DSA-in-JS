@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debouncing</title>
+</head>
+
+<body>
+  <input type="text" class="search_box" placeholder="search products">
+</body>
+
+</html>
+<script>
+  let timeoutId;
+
+  const getData = () => {
+    console.log("Here is data");
+  }
+
+  const debounce = (callback, delay) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      callback();
+    }, delay);
+  }
+
+  const searchBox = document.querySelector(".search_box");
+
+  // searchBox.addEventListener("input", () => debounce(getData, 1000));
+  searchBox.addEventListener("input", getData);
+</script>
