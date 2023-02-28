@@ -1,21 +1,16 @@
 "use strict";
-//methods -> function inside object
+//!methods -> function inside object
 
-
-function personInfo() {
-  console.log(`person name is ${this.firstName} and person age is ${this.age}`);
-}
 const person = {
-  firstName: "Govind",
-  age: 21,
-  about: personInfo,
-};
-
-const person1 = {
-  firstName: "Shravani",
+  name: "Shravani",
   age: 24,
-  about: personInfo,
+  about: function () {
+    console.log(`${this.name} is ${this.age} years old`);
+  },
+  is18: function () {
+    console.log(this.age > 18 ? "above 18" : "below 18");
+  },
 };
 
 person.about();
-person1.about();
+person.is18();
