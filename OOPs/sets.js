@@ -26,6 +26,7 @@ const uniqueElements = new Set(myArray);
 let len = 0;
 for (let elem of uniqueElements) len++;
 
+for (let elem of uniqueElements) console.log(elem);
 console.log(len);
 
 // console.log(numbers);
