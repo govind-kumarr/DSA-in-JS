@@ -31,3 +31,23 @@ function maxSubarraySum() {
 
   console.log(max);
 }
+
+function findMin(str, n, k) {
+  let i = 0,
+    j = 0,
+    min = Infinity,
+    w = 0;
+  while (j < n) {
+    if (str[j] == "W") w++;
+    if (j - i + 1 == k) {
+      if (w < min) min = w;
+
+      if (str[i] == "W") w--;
+      i++;
+    }
+    j++;
+  }
+  console.log(min);
+}
+
+findMin("BBWBW", 5, 5);
