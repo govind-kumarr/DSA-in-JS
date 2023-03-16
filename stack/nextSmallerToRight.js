@@ -19,5 +19,9 @@ function nextSmallerToRight(nums) {
   return ans;
 }
 
-let ans = nextSmallerToRight([2, 1, 5, 6, 2, 3]);
+let arr = [8, 4, 6, 2, 3];
+let ans = nextSmallerToRight(arr);
 console.log(ans);
+
+// let ans = nextSmallerToRight([2, 1, 5, 6, 2, 3]);
+// console.log(ans);
