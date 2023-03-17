@@ -1,3 +1,4 @@
+const data = require("./db.json");
 function findUniqueStr(s) {
   let hash = {};
 
@@ -15,4 +16,24 @@ function findUniqueStr(s) {
   }
 }
 
-findUniqueStr("leetcode");
+// findUniqueStr("leetcode");
+
+let obj = {
+  name: "Govind ",
+  last_name: "Kumar",
+  age: 21,
+  full_name: "Govind Kumar",
+};
+
+// for (let key in obj) console.log(`${key}: ${obj[key]}`);
+let arr = [1, 2, 3, 4];
+// for (let key of arr) console.log(`${key}`);
+let str = "Govind";
+// for (let key of str) console.log(`${key}`);
+
+// console.log("name", obj["name"]);
+// console.log("last_name", obj["last_name"]);
+// console.log("age", obj["age"]);
+// console.log("full_name", obj["full_name"]);
+
+console.log(data);
